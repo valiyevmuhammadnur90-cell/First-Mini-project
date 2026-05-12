@@ -26,9 +26,9 @@ router.patch("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  await productModel.findByIdAndDelete(id);
+  const deleted = await productModel.findByIdAndDelete(id);
 
-  res.json({ message: "Product deleted" });
+  res.json({ message: "Product deleted", id: deleted._id });
 });
 
 export default router;

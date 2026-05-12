@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import { connectDB } from "./config/connectDB.js";
+import cors from "cors";
+import productRoutes from "./routes/product.routes.js";
 
 const DB_URI = process.env.DB_URI;
 if (!DB_URI) {
@@ -15,6 +17,8 @@ app.use(
     origin: ["http://localhost:5173"],
   }),
 );
+
+app.use("/products", productRoutes);
 
 connectDB(DB_URI);
 app.listen(3000, () => {
