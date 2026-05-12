@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import { connectDB } from "./config/connectDB.js";
+import dns from "dns";
+dns.setServers(["1.1.1.1", "4.4.4.4"]);
 import cors from "cors";
 import productRoutes from "./routes/product.routes.js";
 
